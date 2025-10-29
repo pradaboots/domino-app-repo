@@ -253,5 +253,5 @@ class Lease(models.Model):
     )
 
     start_date = models.DateField()
-    end_date = models.DateField(null=True,blank=True)
+    end_date = models.DateField(null=True,blank=True, help_text='')
 
