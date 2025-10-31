@@ -19,12 +19,17 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from accounts.views import HomeView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")), #signup view
-    path("accounts/", include("django.contrib.auth.urls")) #login, logout , password reset
+    path("accounts/", include("django.contrib.auth.urls")), #login, logout , password reset
+    path("api/auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+     path("api/", include("api.urls")),
+
 ]
 
 if settings.DEBUG:
