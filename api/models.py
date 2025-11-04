@@ -277,6 +277,8 @@ class TenantInvite(models.Model):
     def __str__(self):
         tag = self.unit or self.property or "General"
         return f"Invite {self.code} ({tag})"
+    
+
 
 
 """Relaitonal Schema 
